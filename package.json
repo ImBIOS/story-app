@@ -1,12 +1,22 @@
 {
   "name": "story-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Story App is a simple app that allows you to create stories.",
+  "private": true,
   "scripts": {
+    "dev": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "prettier": "prettier --check .",
+    "format": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "your_name <your_email>",
+  "keywords": [
+    "webpack",
+    "sass",
+    "babel",
+    "bootstrap"
+  ],
+  "author": "Imamuzzaki Abu Salam <imamuzzaki@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "7.20.2",
@@ -18,6 +28,7 @@
     "css-loader": "6.7.2",
     "html-webpack-plugin": "5.5.0",
     "postcss-loader": "7.0.1",
+    "prettier": "^2.8.8",
     "sass": "1.56.1",
     "sass-loader": "13.2.0",
     "style-loader": "3.3.1",
@@ -28,6 +39,7 @@
   },
   "dependencies": {
     "@popperjs/core": "2.11.6",
-    "bootstrap": "5.2.2"
+    "bootstrap": "5.2.2",
+    "bootstrap-icons": "^1.10.5"
   }
 }
