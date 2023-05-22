@@ -27,7 +27,7 @@ class ModalStory extends LitWithoutShadowDom {
           </div>
           <div class="modal-body">
             <div class="mb-3">
-              <img src="" id="imgDetailRecord" class="img-fluid" alt="Evidence of story" />
+              <img src="" id="imgDetailRecord" class="img-fluid" alt="Story image" />
             </div>
 
             <h2>Rincian Cerita</h2>

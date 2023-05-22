@@ -1,5 +1,6 @@
 import { html } from 'lit';
 import LitWithoutShadowDom from './base/lit-without-shadow-dom';
+import { formatPath } from '../utils';
 
 class ButtonLink extends LitWithoutShadowDom {
   static properties = {
@@ -28,7 +29,9 @@ class ButtonLink extends LitWithoutShadowDom {
 
   render() {
     return html`
-      <a class="btn ${this.classes}" href=${this.to}> ${this._templateIcon()}${this.content} </a>
+      <a class="btn ${this.classes}" href=${formatPath(this.to)}>
+        ${this._templateIcon()}${this.content}
+      </a>
     `;
   }
 

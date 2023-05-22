@@ -1,4 +1,5 @@
-import { getBasePath } from '../utils';
+import LoadingOverlay from '../components/loading-overlay';
+import { formatPath } from '../utils';
 
 // Type
 const { Story } = require('../types');
@@ -16,13 +17,24 @@ const Dashboard = {
    * Initial data
    */
   async _initialData() {
-    const fetchData = await fetch(`${getBasePath()}/data/DATA.json`);
-    const response = await fetchData.json();
+    // Instantiate loading component and append it to the DOM
+    const loadingComponent = new LoadingOverlay();
+    document.body.appendChild(loadingComponent);
 
-    /** @type {Story[]} */
-    this._userListStory = response.listStory;
-    this._populateStoriesRecordToTable(this._userListStory);
-    this._populateStoriesDataToCard(this._userListStory);
+    try {
+      const fetchData = await fetch(formatPath('/data/DATA.json'));
+      const response = await fetchData.json();
+
+      /** @type {Story[]} */
+      this._userListStory = response.listStory;
+      this._populateStoriesRecordToTable(this._userListStory);
+      this._populateStoriesDataToCard(this._userListStory);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      // Remove loading component from the DOM
+      document.body.removeChild(loadingComponent);
+    }
   },
 
   /**
@@ -138,7 +150,7 @@ const Dashboard = {
     imgDetailRecord.setAttribute('alt', `${name} story photo`);
     idDetailRecord.textContent = id;
     nameDetailRecord.textContent = name;
-    dateDetailRecord.textContent = this._formatDate(createdAt);
+    dateDetailRecord.textContent = createdAt;
     descriptionDetailRecord.textContent = description || '-';
   },
 
@@ -153,16 +165,16 @@ const Dashboard = {
 
     return `
       <div class="col-12 col-sm-6 col-lg-4">
-        <card-dashboard-component
+        <story-card-component
           id="${id}"
           name="${name}"
           description="${description}"
-          createdAt="${this._formatDate(createdAt)}"
-          classes="h-100 ${randomColor} text-${randomColor} bg-gradient"
+          createdAt="${createdAt}"
+          classes="h-100 bg-${randomColor} text-bg-${randomColor} bg-gradient"
           data-bs-toggle="modal"
           data-bs-target="#recordDetailModal"
           data-record-id="${id}"
-        ></card-dashboard-component>
+        ></story-card-component>
       </div>
     `;
   },
@@ -180,26 +192,13 @@ const Dashboard = {
   },
 
   /**
-   * Format date
-   * @param {string} dateStr
-   * @returns {string} Formatted date
-   */
-  _formatDate(dateStr) {
-    return new Date(dateStr).toLocaleDateString('id-ID', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-  },
-
-  /**
    * Get random color
    * @returns {string} Random color
    */
   _getRandomColor() {
-    const colors = ['bg-secondary', 'bg-success', 'bg-info', 'bg-dark'];
-    return colors[Math.floor(Math.random() * colors.length)];
+    const colors = ['primary', 'secondary', 'success', 'info', 'light', 'dark'];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
   },
 };
 

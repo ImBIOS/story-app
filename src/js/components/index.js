@@ -1,24 +1,19 @@
 // Dashboard
 import './button-link';
-import './card-dashboard';
 import './modal-story';
+import './story-card';
 
 // Footer
 import './footer';
 
 // Loading
-import './loading-placeholder';
-import './loading-spinner';
+import './loading-overlay';
 
 // Navigation
 import './nav-link';
 import './nav-link-auth';
 import './nav-links';
 import './navbar';
-
-// Story
-import './story-card';
-import './story-form';
 
 // Form
 import './form/input-group-with-validation';

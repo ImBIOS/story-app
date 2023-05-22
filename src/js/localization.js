@@ -1,4 +1,4 @@
-import { configureLocalization } from '@lit/localize';
+import { configureLocalization, msg } from '@lit/localize';
 import { sourceLocale, targetLocales } from '../generated/locale-codes';
 
 export const { getLocale, setLocale } = configureLocalization({
@@ -16,9 +16,4 @@ export const setLocaleFromUrl = async () => {
   console.log('setLocaleFromUrl', locale);
   console.log('getLocale', getLocale());
   await setLocale(locale);
-};
-
-export const localeNames = {
-  en: 'Inggris',
-  id: 'Indonesia',
 };

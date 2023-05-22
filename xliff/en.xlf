@@ -22,10 +22,6 @@
   <source>Tutup</source>
   <target>Close</target>
 </trans-unit>
-<trans-unit id="s75d066e29a788f91">
-  <source>Dibuat dengan ❤ oleh Imamuzzaki Abu Salam</source>
-  <target>Created with ❤ by Imamuzzaki Abu Salam</target>
-</trans-unit>
 <trans-unit id="s229fb4df9ecf3ed1">
   <source>Keluar</source>
   <target>Log Out</target>
@@ -41,6 +37,30 @@
 <trans-unit id="saca1bb9c1da8e7da">
   <source>Tambah Cerita</source>
   <target>Add Story</target>
+</trans-unit>
+<trans-unit id="se6561ffd93336536">
+  <source>🇬🇧 Bahasa Inggris (UK)</source>
+  <target>🇬🇧 English (UK)</target>
+</trans-unit>
+<trans-unit id="s8cccf6e8711cd94c">
+  <source>🇮🇩 Bahasa Indonesia</source>
+  <target>🇮🇩 Indonesia</target>
+</trans-unit>
+<trans-unit id="s8b4bce1d74126aa9">
+  <source>Sunting</source>
+  <target>Edit</target>
+</trans-unit>
+<trans-unit id="s746057cfbeef6cfe">
+  <source>Hapus</source>
+  <target>Delete</target>
+</trans-unit>
+<trans-unit id="sa3eaf537e3bcdd6b">
+  <source>Pilih Bahasa</source>
+  <target>Choose Language</target>
+</trans-unit>
+<trans-unit id="s94f9818a77395434">
+  <source>Dibuat dengan 💖 oleh Imamuzzaki Abu Salam</source>
+  <target>Created with 💖 by Imamuzzaki Abu Salam</target>
 </trans-unit>
 </body>
 </file>

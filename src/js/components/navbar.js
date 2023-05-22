@@ -19,7 +19,7 @@ class Navbar extends LitWithoutShadowDom {
 
   render() {
     return html`
-      <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <nav class="fixed-top navbar mask-custom shadow-0 navbar-expand-md navbar-light">
         <div class="container">
           <span class="navbar-brand">${this.brandName}</span>
           <button

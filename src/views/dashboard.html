@@ -11,7 +11,15 @@
     <main>
       <div class="main-content">
         <div class="container py-5">
-          <h1 class="mb-3">Dashboard</h1>
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="mb-3">Dashboard</h1>
+            <button-link-component
+              to="/stories/add.html"
+              content="Tambah Cerita"
+              classes="btn btn-primary mb-3"
+              icon="bi-plus"
+            ></button-link-component>
+          </div>
 
           <div class="row mb-5 g-3" id="records">
             <!-- Cards -->
@@ -20,7 +28,9 @@
       </div>
     </main>
 
-    <footer-component></footer-component>
+    <footer>
+      <footer-component></footer-component>
+    </footer>
 
     <modal-story-component
       title="Rincian Cerita"

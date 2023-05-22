@@ -1,8 +1,7 @@
-import { html } from 'lit';
-import LitWithoutShadowDom from './base/lit-without-shadow-dom';
-import { getBasePath } from '../utils';
+import { LitElement, css, html } from 'lit';
+import { formatPath } from '../utils';
 
-class NavLink extends LitWithoutShadowDom {
+class NavLink extends LitElement {
   static properties = {
     content: { type: String, reflect: true },
     to: { type: String, reflect: true },
@@ -19,10 +18,25 @@ class NavLink extends LitWithoutShadowDom {
     }
   }
 
+  static styles = css`
+    :host {
+      --color: var(--bs-primary);
+    }
+
+    :host(:hover) {
+      --color: var(--bs-primary-hover);
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--color);
+    }
+  `;
+
   render() {
     return html`
       <li class="nav-item">
-        <a class="nav-link" href="${getBasePath()}${this.to}">${this.content}</a>
+        <a class="nav-link" href="${formatPath(this.to)}">${this.content}</a>
       </li>
     `;
   }
