@@ -11,31 +11,6 @@ const htmlWebpackPluginConfig = {
   },
   templateParameters: {
     brandName: 'Story App',
-    navLinks: `
-      <ul class="navbar-nav ms-auto mb-2 mb-md-0 d-flex align-items-center gap-3">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Add Story</a>
-        </li>
-        <li class="nav-item dropdown d-none" id="userLoggedMenu">
-          <a class="nav-link dropdown-toggle text-nowrap" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <div style="width: 35px;height: 35px" class="me-2 d-inline-block">
-              <img id="imgUserLogged" class="img-fluid rounded-pill" src="" alt="">
-            </div>
-            <span id="nameUserLogged"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" id="userLogOut" href="#">Log Out</a></li>
-          </ul>
-        </li>
-        <li class="nav-item" id="loginMenu">
-          <a class="nav-link" href="#">Log In</a>
-        </li>
-      </ul>
-    `,
-    footerContent: '<p class="text-center text-white mb-0">Made with ❤ by Imamuzzaki Abu Salam</p>',
   },
 };
 
@@ -79,6 +54,18 @@ module.exports = {
       title: 'Dashboard',
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/views/dashboard.html'),
+      ...htmlWebpackPluginConfig,
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Add Records',
+      filename: 'stories/add.html',
+      template: path.resolve(__dirname, 'src/views/stories/add.html'),
+      ...htmlWebpackPluginConfig,
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Edit Records',
+      filename: 'stories/edit.html',
+      template: path.resolve(__dirname, 'src/views/stories/edit.html'),
       ...htmlWebpackPluginConfig,
     }),
 

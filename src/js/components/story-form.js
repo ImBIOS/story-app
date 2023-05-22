@@ -1,6 +1,7 @@
-import { LitElement, html, css } from 'lit';
+import { css, html } from 'lit';
+import LitWithoutShadowDom from './base/lit-without-shadow-dom';
 
-class StoryForm extends LitElement {
+class StoryForm extends LitWithoutShadowDom {
   static styles = css`
     /* Tulis CSS Anda di sini */
   `;

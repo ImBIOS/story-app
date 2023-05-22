@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="en" source-language="id" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="s09240e07b5b8d640">
+  <source>ID</source>
+  <target>ID</target>
+</trans-unit>
+<trans-unit id="sef49b2c68fd1e332">
+  <source>Nama</source>
+  <target>Name</target>
+</trans-unit>
+<trans-unit id="s232fd7b6b5a27012">
+  <source>Tanggal Dibuat</source>
+  <target>Date Created</target>
+</trans-unit>
+<trans-unit id="s772ce5f935d58e37">
+  <source>Deskripsi</source>
+  <target>Description</target>
+</trans-unit>
+<trans-unit id="s749c72374d54863f">
+  <source>Tutup</source>
+  <target>Close</target>
+</trans-unit>
+<trans-unit id="s75d066e29a788f91">
+  <source>Dibuat dengan ❤ oleh Imamuzzaki Abu Salam</source>
+  <target>Created with ❤ by Imamuzzaki Abu Salam</target>
+</trans-unit>
+<trans-unit id="s229fb4df9ecf3ed1">
+  <source>Keluar</source>
+  <target>Log Out</target>
+</trans-unit>
+<trans-unit id="sf9a862bfd829397e">
+  <source>Dasbor</source>
+  <target>Dashboard</target>
+</trans-unit>
+<trans-unit id="s45dab30b4d2d3c14">
+  <source>Masuk</source>
+  <target>Log In</target>
+</trans-unit>
+<trans-unit id="saca1bb9c1da8e7da">
+  <source>Tambah Cerita</source>
+  <target>Add Story</target>
+</trans-unit>
+</body>
+</file>
+</xliff>

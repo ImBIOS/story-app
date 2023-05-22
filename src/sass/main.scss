@@ -1,1 +1,24 @@
 @use 'vendors';
+@use 'variables' as var;
+@use 'mixins' as mix;
+
+.card-text {
+  display: -webkit-box;
+  max-width: 300px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+body {
+  background-color: var.$primary-color;
+  color: var.$secondary-color;
+
+  a {
+    @include mix.transition(color);
+
+    &:hover {
+      color: darken(var.$secondary-color, 10%);
+    }
+  }
+}

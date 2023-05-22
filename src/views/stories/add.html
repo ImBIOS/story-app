@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title><%= htmlWebpackPlugin.options.title %> | Story App</title>
+  </head>
+  <body>
+    <header><navbar-component brandName="<%= brandName %>"></navbar-component></header>
+
+    <main>
+      <div class="main-content">
+        <div class="container py-5">
+          <h1 class="mb-3">Tambah Cerita</h1>
+
+          <form class="row g-3" id="addRecordForm" novalidate>
+            <div class="col-12 col-md-6">
+              <label for="validationCustomRecordName" class="form-label">Nama</label>
+              <input-with-validation-component
+                type="text"
+                inputId="validationCustomRecordName"
+                invalidFeedbackMessage="Wajib diisi"
+                required
+              ></input-with-validation-component>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="validationCustomEvidence" class="form-label">Gambar</label>
+              <input-image-with-preview-component
+                inputId="validationCustomEvidence"
+                invalidFeedbackMessage="Wajib diisi"
+                required
+              ></input-image-with-preview-component>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="validationCustomNotes" class="form-label">Deskripsi</label>
+              <textarea-with-validation-component
+                inputId="validationCustomNotes"
+                invalidFeedbackMessage="Wajib diisi"
+                required
+              ></textarea-with-validation-component>
+            </div>
+            <div class="col-12 text-end">
+              <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer-component></footer-component>
+  </body>
+</html>

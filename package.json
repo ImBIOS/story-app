@@ -4,6 +4,8 @@
   "description": "Story App is a simple app that allows you to create stories.",
   "private": true,
   "scripts": {
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "prettier": "prettier --check .",
@@ -19,27 +21,33 @@
   "author": "Imamuzzaki Abu Salam <imamuzzaki@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "7.20.2",
-    "@babel/preset-env": "7.20.2",
-    "autoprefixer": "10.4.13",
-    "babel-loader": "9.1.0",
+    "@babel/core": "7.21.8",
+    "@babel/preset-env": "7.21.5",
+    "@lit/localize-tools": "^0.6.9",
+    "autoprefixer": "10.4.14",
+    "babel-loader": "9.1.2",
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "11.0.0",
-    "css-loader": "6.7.2",
-    "html-webpack-plugin": "5.5.0",
-    "postcss-loader": "7.0.1",
-    "prettier": "^2.8.8",
-    "sass": "1.56.1",
-    "sass-loader": "13.2.0",
-    "style-loader": "3.3.1",
-    "webpack": "5.75.0",
-    "webpack-cli": "5.0.0",
-    "webpack-dev-server": "4.11.1",
+    "css-loader": "6.7.4",
+    "html-webpack-plugin": "5.5.1",
+    "postcss-loader": "7.3.0",
+    "prettier": "2.8.8",
+    "sass": "1.62.1",
+    "sass-loader": "13.2.2",
+    "style-loader": "3.3.3",
+    "webpack": "5.83.1",
+    "webpack-cli": "5.1.1",
+    "webpack-dev-server": "4.15.0",
     "webpack-merge": "5.8.0"
   },
   "dependencies": {
-    "@popperjs/core": "2.11.6",
-    "bootstrap": "5.2.2",
-    "bootstrap-icons": "^1.10.5"
+    "@lit/localize": "^0.11.4",
+    "@popperjs/core": "2.11.7",
+    "bootstrap": "5.2.3",
+    "bootstrap-icons": "1.10.5",
+    "lit": "^2.7.4"
+  },
+  "repository": {
+    "url": "git+https://github.com/ImBIOS/story-app.git"
   }
 }

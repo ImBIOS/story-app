@@ -1,12 +1,19 @@
 // Import our custom CSS
 import '../sass/main.scss';
 
+// Import components
+import './components/index';
+
 // Import javascript file as needed
-import Dashboard from './pages/dashboard';
 import * as bootstrap from 'bootstrap';
+import Dashboard from './pages/dashboard';
+import Add from './pages/stories/add';
+import Edit from './pages/stories/edit';
 
 const routes = {
   '/': Dashboard,
+  '/stories/add.html': Add,
+  '/stories/edit.html': Edit,
 };
 
 const detectRoute = () => routes[window.location.pathname];
@@ -26,4 +33,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   const route = detectRoute();
   route.init();
+
+  const isBootstrap = typeof bootstrap !== 'undefined';
+  console.info(isBootstrap ? 'Bootstrap loaded' : 'Bootstrap not loaded');
 });
