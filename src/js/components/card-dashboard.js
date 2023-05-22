@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { getBasePath } from '../utils';
 import LitWithoutShadowDom from './base/lit-without-shadow-dom';
 
 class CardDashboard extends LitWithoutShadowDom {
@@ -29,7 +30,7 @@ class CardDashboard extends LitWithoutShadowDom {
           <p class="card-text">${this.description}</p>
 
           <div class="d-flex justify-content-center align-items-center gap-2">
-          <a class="btn btn-sm btn-warning" href="/stories/edit.html?id=${this.id}">
+          <a class="btn btn-sm btn-warning" href="${getBasePath()}/stories/edit.html?id=${this.id}">
             <i class="bi bi-pen-fill me-1"></i>Edit
           </a>
           <a class="btn btn-sm btn-danger" href="#">

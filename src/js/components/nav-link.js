@@ -1,5 +1,6 @@
 import { html } from 'lit';
 import LitWithoutShadowDom from './base/lit-without-shadow-dom';
+import { getBasePath } from '../utils';
 
 class NavLink extends LitWithoutShadowDom {
   static properties = {
@@ -21,7 +22,7 @@ class NavLink extends LitWithoutShadowDom {
   render() {
     return html`
       <li class="nav-item">
-        <a class="nav-link" href="${this.to}">${this.content}</a>
+        <a class="nav-link" href="${getBasePath()}${this.to}">${this.content}</a>
       </li>
     `;
   }
