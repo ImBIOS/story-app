@@ -4,8 +4,6 @@
   "description": "Story App is a simple app that allows you to create stories.",
   "private": true,
   "scripts": {
-    "predeploy": "pnpm run build",
-    "deploy": "gh-pages -d dist",
     "dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "prettier": "prettier --check .",

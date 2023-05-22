@@ -9,11 +9,12 @@ import * as bootstrap from 'bootstrap';
 import Dashboard from './pages/dashboard';
 import Add from './pages/stories/add';
 import Edit from './pages/stories/edit';
+import { getBasePath } from './utils';
 
 const routes = {
-  '/': Dashboard,
-  '/stories/add.html': Add,
-  '/stories/edit.html': Edit,
+  [`${getBasePath()}/`]: Dashboard,
+  [`${getBasePath()}/stories/add.html`]: Add,
+  [`${getBasePath()}/stories/edit.html`]: Edit,
 };
 
 const detectRoute = () => routes[window.location.pathname];

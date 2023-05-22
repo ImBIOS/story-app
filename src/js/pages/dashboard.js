@@ -1,3 +1,5 @@
+import { getBasePath } from '../utils';
+
 // Type
 const { Story } = require('../types');
 
@@ -14,7 +16,7 @@ const Dashboard = {
    * Initial data
    */
   async _initialData() {
-    const fetchData = await fetch('/data/DATA.json');
+    const fetchData = await fetch(`${getBasePath()}/data/DATA.json`);
     const response = await fetchData.json();
 
     /** @type {Story[]} */
