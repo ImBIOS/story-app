@@ -8,6 +8,7 @@ import './footer';
 
 // Loading
 import './loading-overlay';
+import './spinner';
 
 // Navigation
 import './nav-link';
@@ -21,3 +22,6 @@ import './form/input-image-with-preview';
 import './form/input-with-validation';
 import './form/locale-picker';
 import './form/textarea-with-validation';
+
+// Auth
+import './auth/login-as-guest';

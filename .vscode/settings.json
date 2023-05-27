@@ -1,8 +1,12 @@
 {
+  "eslint.alwaysShowStatus": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true
+  "eslint.probe": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  // Runs Prettier, then ESLint
+  "editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll", "source.organizeImports"],
+  // turn it off for JS and JSX, we will do this via eslint
+  "[javascript, javascriptreact]": {
+    "editor.formatOnSave": false
   }
 }

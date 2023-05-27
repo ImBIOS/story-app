@@ -1,5 +1,6 @@
 import LoadingOverlay from '../components/loading-overlay';
-import { formatPath } from '../utils';
+import { getAll } from '../network/stories';
+import CheckUserAuth from './auth/check-user-auth';
 
 // Type
 const { Story } = require('../types');
@@ -9,6 +10,8 @@ const Dashboard = {
    * Main initializer
    */
   async init() {
+    CheckUserAuth.checkLoginState();
+
     await this._initialData();
     this._initialListener();
   },
@@ -22,11 +25,21 @@ const Dashboard = {
     document.body.appendChild(loadingComponent);
 
     try {
-      const fetchData = await fetch(formatPath('/data/DATA.json'));
-      const response = await fetchData.json();
+      const response = await getAll();
+
+      // If unauthorized, show message to guest
+      if (response.status === 401) {
+        const errorMessage = document.querySelector('#errorMessage');
+        errorMessage.innerHTML =
+          'Anda tidak memiliki akses ke halaman ini, anda menggunakan akun tamu';
+        errorMessage.classList.remove('d-none');
+        return;
+      }
+
+      const responseRecords = response.data.listStory;
 
       /** @type {Story[]} */
-      this._userListStory = response.listStory;
+      this._userListStory = responseRecords;
       this._populateStoriesRecordToTable(this._userListStory);
       this._populateStoriesDataToCard(this._userListStory);
     } catch (error) {
@@ -47,9 +60,7 @@ const Dashboard = {
       modalTitle.focus();
       const button = event.relatedTarget;
       /** @type {Story} */
-      const dataRecord = this._userListStory.find((item) => {
-        return item.id == button.dataset.recordId;
-      });
+      const dataRecord = this._userListStory.find((item) => item.id == button.dataset.recordId);
       this._populateDetailStoryToModal(dataRecord);
     });
   },
@@ -96,7 +107,7 @@ const Dashboard = {
   /**
    * Populate data to table
    * @param {Story[]} listStory List of story
-   * @returns {void}
+   * @returns {void} void
    */
   _populateStoriesRecordToTable(listStory = null) {
     if (!(typeof listStory === 'object')) {
@@ -158,7 +169,7 @@ const Dashboard = {
    * Template for card
    * @param {number} index Index of the record
    * @param {Story} story Story record
-   * @returns {string}
+   * @returns {string} HTML template
    */
   _templateCard(index, { id, name, description, createdAt }) {
     const randomColor = this._getRandomColor();
@@ -181,13 +192,18 @@ const Dashboard = {
 
   /**
    * Template for empty card
-   * @returns {string}
+   * @returns {string} HTML template
    */
   _templateEmptyCard() {
-    const recordHeadTable = document.querySelector('#recordsTable thead');
-
     return `
-      <div class="text-center">Tidak ada catatan cerita</div>
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Tidak ada data</h5>
+            <p class="card-text">Tidak ada data yang dapat ditampilkan.</p>
+          </div>
+        </div>
+      </div>
     `;
   },
 

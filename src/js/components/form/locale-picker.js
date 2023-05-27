@@ -35,13 +35,13 @@ class LocalePicker extends LitElement {
 
     return html`
       <select @change=${this._localeChanged}>
-        ${allLocales.map((locale) => {
-          return html`
+        ${allLocales.map(
+          (locale) => html`
             <option value=${locale} ?selected=${locale === getLocale()}>
               ${localeNames[locale]}
             </option>
-          `;
-        })}
+          `,
+        )}
       </select>
     `;
   }

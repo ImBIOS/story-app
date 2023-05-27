@@ -40,12 +40,12 @@ class InputImageWithPreview extends LitWithoutShadowDom {
   }
 
   _updatePhotoPreview() {
-    const evidenceImgChange = document.querySelector('#validationCustomEvidenceImgChange');
-    const evidenceImgInput = document.querySelector('#validationCustomEvidence');
+    const evidenceImgChange = document.querySelector('#validationCustomPhotoImgChange');
+    const evidenceImgInput = document.querySelector('#validationCustomPhoto');
 
     let evidenceRecordImg = null;
     if (this.defaultImage) {
-      evidenceRecordImg = document.querySelector('#validationCustomEvidenceImg');
+      evidenceRecordImg = document.querySelector('#validationCustomPhotoImg');
     }
 
     const photo = evidenceImgInput.files[0];

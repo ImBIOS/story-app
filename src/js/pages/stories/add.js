@@ -1,5 +1,11 @@
+import { store, storeAsGuest } from '../../network/stories';
+import { useIsGuest } from '../../utils';
+import CheckUserAuth from '../auth/check-user-auth';
+
 const Add = {
   async init() {
+    CheckUserAuth.checkLoginState();
+
     this._initialListener();
   },
 
@@ -11,6 +17,11 @@ const Add = {
         event.preventDefault();
         event.stopPropagation();
 
+        // Set submit button to loading state
+        const submitButton = document.querySelector('#submitBtn');
+        submitButton.innerHTML = `<spinner-component></spinner-component>`;
+        submitButton.disabled = true;
+
         addFormRecord.classList.add('was-validated');
         this._sendPost();
       },
@@ -18,24 +29,33 @@ const Add = {
     );
   },
 
-  _sendPost() {
+  async _sendPost() {
     const formData = this._getFormData();
 
     if (this._validateFormData({ ...formData })) {
-      console.log('formData', formData);
+      try {
+        const isGuest = useIsGuest();
+        const fn = isGuest ? storeAsGuest : store;
 
-      // this._goToDashboardPage();
+        const response = await fn(formData);
+        console.info('response', response);
+        window.alert('New story added successfully');
+        this._goToDashboardPage();
+      } catch (error) {
+        console.error(error);
+      }
     }
   },
 
+  /**
+   * Get form data
+   * @returns {{photo: File, description: string}} formData
+   */
   _getFormData() {
-    const nameInput = document.querySelector('#validationCustomRecordName');
-    const photoInput = document.querySelector('#validationCustomEvidence');
+    const photoInput = document.querySelector('#validationCustomPhoto');
     const descriptionInput = document.querySelector('#validationCustomNotes');
 
     return {
-      name: nameInput.value,
-      createdAt: new Date(),
       photo: photoInput.files[0],
       description: descriptionInput.value,
     };

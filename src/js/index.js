@@ -6,6 +6,8 @@ import './components/index';
 
 // Import javascript file as needed
 import * as bootstrap from 'bootstrap';
+import Login from './pages/auth/login';
+import Register from './pages/auth/register';
 import Dashboard from './pages/dashboard';
 import Add from './pages/stories/add';
 import Edit from './pages/stories/edit';
@@ -15,6 +17,9 @@ const routes = {
   [formatPath('/', true)]: Dashboard,
   [formatPath('/stories/add.html', true)]: Add,
   [formatPath('/stories/edit.html', true)]: Edit,
+
+  [formatPath('/auth/login.html', true)]: Login,
+  [formatPath('/auth/register.html', true)]: Register,
 };
 
 const detectRoute = () => routes[window.location.pathname];
