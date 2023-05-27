@@ -1,4 +1,4 @@
-import { configureLocalization, msg } from '@lit/localize';
+import { configureLocalization } from '@lit/localize';
 import { sourceLocale, targetLocales } from '../generated/locale-codes';
 
 export const { getLocale, setLocale } = configureLocalization({
@@ -13,7 +13,7 @@ export const setLocaleFromUrl = async () => {
   const url = new URL(window.location.href);
   const locale = url.searchParams.get('lang') || sourceLocale;
 
-  console.log('setLocaleFromUrl', locale);
-  console.log('getLocale', getLocale());
+  console.info('setLocaleFromUrl', locale);
+  console.info('getLocale', getLocale());
   await setLocale(locale);
 };

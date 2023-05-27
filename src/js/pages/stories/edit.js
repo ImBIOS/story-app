@@ -1,8 +1,13 @@
+import { getById } from '../../network/stories';
+import CheckUserAuth from '../auth/check-user-auth';
+
 // Type
 const { Story } = require('../../types');
 
 const Edit = {
   async init() {
+    CheckUserAuth.checkLoginState();
+
     await this._initialData();
     this._initialListener();
   },
@@ -15,15 +20,10 @@ const Edit = {
       return;
     }
 
-    const fetchData = await fetch('/data/DATA.json');
-    const response = await fetchData.json();
-    /** @type {Story[]} */
-    const userListStory = response.listStory;
+    const response = await getById(storyId);
+    const userStory = response.data.story;
 
-    /** @type {Story} */
-    const dataRecord = userListStory.find((item) => item.id === storyId);
-
-    this._populateStoryToForm(dataRecord);
+    this._populateStoryToForm(userStory);
   },
 
   _initialListener() {
@@ -33,6 +33,11 @@ const Edit = {
       (event) => {
         event.preventDefault();
         event.stopPropagation();
+
+        // Set submit button to loading state
+        const submitButton = document.querySelector('#submitBtn');
+        submitButton.innerHTML = `<spinner-component></spinner-component>`;
+        submitButton.disabled = true;
 
         editRecordForm.classList.add('was-validated');
         this._sendPost();
@@ -45,20 +50,18 @@ const Edit = {
     const formData = this._getFormData();
 
     if (this._validateFormData({ ...formData })) {
-      console.log('formData', formData);
+      // TODO: Delete this only if there is edit feature
+      console.info('formData', formData);
 
       // this._goToDashboardPage();
     }
   },
 
   _getFormData() {
-    const nameInput = document.querySelector('#validationCustomRecordName');
-    const photoInput = document.querySelector('#validationCustomEvidence');
+    const photoInput = document.querySelector('#validationCustomPhoto');
     const descriptionInput = document.querySelector('#validationCustomNotes');
 
     return {
-      name: nameInput.value,
-      date: new Date(),
       photo: photoInput.files[0],
       description: descriptionInput.value,
     };
@@ -66,20 +69,19 @@ const Edit = {
 
   /**
    * Populate data to form
-   * @param {Story} story
+   * @param {Story} story Story object
    */
   _populateStoryToForm(story = null) {
     if (!(typeof story === 'object')) {
       throw new Error(`Parameter story should be an object. The value is ${story}`);
     }
 
-    const nameInput = document.querySelector('#validationCustomRecordName');
-    const photoInput = document.querySelector('#validationCustomEvidenceImg');
+    const photoInput = document.querySelector('#inputImagePreviewEdit');
     const descriptionInput = document.querySelector('#validationCustomNotes');
 
-    nameInput.value = story.name;
-    photoInput.setAttribute('src', story.photoUrl);
-    photoInput.setAttribute('alt', `${story.name} story photo`);
+    photoInput.setAttribute('defaultImage', story.photoUrl);
+    photoInput.setAttribute('defaultImageAlt', `${story.name} story photo`);
+
     descriptionInput.value = story.description;
   },
 

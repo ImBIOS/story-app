@@ -5,9 +5,7 @@ class LoadingOverlay extends LitWithoutShadowDom {
   render() {
     return html`
       <div class="loading-overlay d-flex justify-content-center align-items-center">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
+        <spinner-component></spinner-component>
       </div>
     `;
   }

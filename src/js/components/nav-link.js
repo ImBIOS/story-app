@@ -20,16 +20,19 @@ class NavLink extends LitElement {
 
   static styles = css`
     :host {
-      --color: var(--bs-primary);
+      --color: var(--bs-light);
     }
 
     :host(:hover) {
-      --color: var(--bs-primary-hover);
+      --color: var(--bs-light-hover);
     }
 
     a {
       text-decoration: none;
       color: var(--color);
+      background-color: rgba(0, 0, 0, 0.45);
+      border-radius: 0.25rem;
+      padding: 0.5rem 1rem;
     }
   `;
 

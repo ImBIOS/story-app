@@ -15,18 +15,10 @@
 
           <form class="row g-3" id="editRecordForm" novalidate>
             <div class="col-12 col-md-6">
-              <label for="validationCustomRecordName" class="form-label">Nama</label>
-              <input-with-validation-component
-                type="text"
-                inputId="validationCustomRecordName"
-                invalidFeedbackMessage="Wajib diisi"
-                required
-              ></input-with-validation-component>
-            </div>
-            <div class="col-12 col-md-6">
-              <label for="validationCustomEvidence" class="form-label">Gambar</label>
+              <label for="validationCustomPhoto" class="form-label">Gambar</label>
               <input-image-with-preview-component
-                inputId="validationCustomEvidence"
+                id="inputImagePreviewEdit"
+                inputId="validationCustomPhoto"
                 invalidFeedbackMessage="Wajib diisi"
                 required
               ></input-image-with-preview-component>
@@ -40,7 +32,7 @@
               ></textarea-with-validation-component>
             </div>
             <div class="col-12 text-end">
-              <button class="btn btn-primary" type="submit">Submit</button>
+              <button class="btn btn-primary" type="submit" id="submitBtn">Submit</button>
             </div>
           </form>
         </div>

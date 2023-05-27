@@ -23,6 +23,11 @@ class Footer extends LitElement {
     locale-picker-component {
       margin-bottom: 1rem;
     }
+
+    a {
+      color: var(--bs-light);
+      text-decoration: none;
+    }
   `;
 
   render() {
@@ -31,7 +36,9 @@ class Footer extends LitElement {
         <div class="container">
           <h3 class="text-center">${msg('Pilih Bahasa')}:</h3>
           <locale-picker-component></locale-picker-component>
-          <p class="copyright">${msg('Dibuat dengan 💖 oleh Imamuzzaki Abu Salam')}</p>
+          <a class="copyright" href="https://github.com/ImBIOS"
+            >${msg('Dibuat dengan 💖 oleh Imamuzzaki Abu Salam')}</a
+          >
         </div>
       </div>
     `;

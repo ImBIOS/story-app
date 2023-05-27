@@ -5,9 +5,12 @@
   "private": true,
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
-    "prettier": "prettier --check .",
-    "format": "prettier --write .",
+    "build": "pnpm run format && webpack --config webpack.prod.js",
+    "lint": "eslint src",
+    "lint:fix": "pnpm run lint --fix",
+    "prettier": "prettier src --check",
+    "prettier:fix": "prettier src --write",
+    "format": "pnpm run prettier:fix && pnpm run lint:fix",
     "test": "echo \"Warning: no test specified\" && exit 0"
   },
   "keywords": [
@@ -27,6 +30,10 @@
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.7.4",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsdoc": "^44.2.7",
     "html-webpack-plugin": "5.5.1",
     "postcss-loader": "7.3.0",
     "prettier": "2.8.8",
@@ -41,8 +48,10 @@
   "dependencies": {
     "@lit/localize": "^0.11.4",
     "@popperjs/core": "2.11.7",
+    "axios": "^1.4.0",
     "bootstrap": "5.2.3",
     "bootstrap-icons": "1.10.5",
+    "firebase": "^9.22.1",
     "lit": "^2.7.4"
   },
   "repository": {

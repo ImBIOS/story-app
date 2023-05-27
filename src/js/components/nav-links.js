@@ -17,7 +17,11 @@ class NavLinks extends LitWithoutShadowDom {
           to="/stories/add.html"
         ></nav-link-component>
         <nav-link-auth-component class="d-none" id="userLoggedMenu"></nav-link-auth-component>
-        <nav-link-component content="${msg('Masuk')}" to="#"></nav-link-component>
+        <nav-link-component
+          content="${msg('Masuk')}"
+          to="/auth/login.html"
+          id="loginMenu"
+        ></nav-link-component>
       </ul>
     `;
   }

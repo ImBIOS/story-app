@@ -1,6 +1,6 @@
 import { html } from 'lit';
-import LitWithoutShadowDom from './base/lit-without-shadow-dom';
 import { formatPath } from '../utils';
+import LitWithoutShadowDom from './base/lit-without-shadow-dom';
 
 class ButtonLink extends LitWithoutShadowDom {
   static properties = {
